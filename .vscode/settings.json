@@ -1,0 +1,9 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "never"
+    },
+    "editor.formatOnSave": false,
+    "eslint.validate": ["javascript"],
+    "eslint.nodePath": "./node_modules/wayfindpc/node_modules"
+}

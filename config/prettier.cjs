@@ -1,0 +1,15 @@
+module.exports = {
+    trailingComma: 'none',
+    tabWidth: 4,
+    semi: false,
+    singleQuote: true,
+    printWidth: 100,
+    overrides: [
+        {
+            files: ['*.yml'],
+            options: {
+                tabWidth: 2
+            }
+        }
+    ]
+}

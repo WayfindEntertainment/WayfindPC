@@ -1,0 +1,35 @@
+{
+    "name": "wayfindpc",
+    "version": "0.0.1",
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "bin": {
+        "wayfindpc": "./index.js"
+    },
+    "main": "index.js",
+    "type": "module",
+    "description": "Wayfind Package Creator - a fast opinionated Node project scaffolder",
+    "license": "MIT",
+    "scripts": {
+        "format": "npx eslint . --fix && npx prettier --write .",
+        "lint": "npx eslint . && npx prettier --check ."
+    },
+    "files": [
+        "index.js",
+        "eslint.js",
+        "prettier.js"
+    ],
+    "dependencies": {
+        "chalk": "^5.0.0",
+        "execa": "^8.0.0",
+        "fs-extra": "^11.0.0",
+        "prompts": "^2.4.2",
+        "eslint": "^8.57.0",
+        "prettier": "^3.2.5",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-plugin-import": "^2.29.0",
+        "eslint-plugin-prettier": "^5.0.0",
+        "eslint-config-prettier": "^9.1.0"
+    }
+}
