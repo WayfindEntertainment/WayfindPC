@@ -1,8 +1,11 @@
 # Wayfind Package Controller
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![eslint](https://img.shields.io/badge/style-eslint-4B32C3.svg)
-![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+![eslint](https://img.shields.io/badge/Style-ESLint-4B32C3.svg)
+![prettier](https://img.shields.io/badge/Format-Prettier-ff69b4.svg)
+
+![Prettier Supported Languages](https://img.shields.io/badge/formats-JS%2C%20JSON%2C%20CSS%2C%20HTML%2C%20PHP%2C%20MD%2C%20YAML-blue?label=Prettier%20Support)
+
 
 **Wayfind Package Controller** (`wayfindpc`) is a fast, opinionated Node.js project scaffolder for
 initializing new projects, linting, and formatting.
@@ -17,7 +20,8 @@ built-in commands to keep your code clean — all from a single devDependency.
 - Formatting with Prettier
 - Built-in `format` and `lint` commands
 - VSCode support preconfigured
-- No need to clutter your dev dependencies with all of the extra boilerplate
+- Supports JS, JSON, CSS, HTML, PHP, Markdown, and YAML
+- No need to clutter your dev dependencies with all of the extra boilerplate or additional plugins
 - **Only one devDependency needed: `wayfindpc`!**
 
 ## 📦 What It Does
