@@ -31,11 +31,17 @@ async function main() {
     if (process.argv[2] === 'format') {
         console.log(chalk.cyan('🔧 Formatting project with ESLint and Prettier...'))
         try {
-            await execa('npx', ['eslint', '.', '--fix'], { stdio: 'inherit' })
+            await execa('npx', ['eslint', '.', '--ext', '.js,.cjs,.mjs', '--fix'], {
+                stdio: 'inherit'
+            })
             await execa('npx', ['prettier', '--write', '.'], { stdio: 'inherit' })
         } catch (err) {
-            console.error(chalk.red('❌ Formatting failed:'), err.message || err)
-            process.exit(1)
+            if (err.exitCode === 2 && /No files matching/.test(err.stderr || '')) {
+                console.warn(chalk.yellow('⚠️ No matching files to format with ESLint.'))
+            } else {
+                console.error(chalk.red('❌ Formatting failed:'), err.message || err)
+                process.exit(1)
+            }
         }
         process.exit(0)
     }
@@ -46,8 +52,12 @@ async function main() {
             await execa('npx', ['eslint', '.'], { stdio: 'inherit' })
             await execa('npx', ['prettier', '--check', '.'], { stdio: 'inherit' })
         } catch (err) {
-            console.error(chalk.red('❌ Lint check failed:'), err.message || err)
-            process.exit(1)
+            if (err.exitCode === 2 && /No files matching/.test(err.stderr || '')) {
+                console.warn(chalk.yellow('⚠️ No matching files to format with ESLint.'))
+            } else {
+                console.error(chalk.red('❌ Formatting failed:'), err.message || err)
+                process.exit(1)
+            }
         }
         process.exit(0)
     }
