@@ -8,7 +8,8 @@ import chalk from 'chalk'
 import { execa } from 'execa'
 import { fileURLToPath } from 'url'
 
-import runPrettierFormat from './lib/format'
+// eslint-disable-next-line import/extensions
+import runPrettierFormat from './lib/format.js'
 
 const sourceRoot = path.dirname(fileURLToPath(import.meta.url))
 
