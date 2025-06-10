@@ -6,9 +6,27 @@
     "printWidth": 100,
     "overrides": [
         {
-            "files": ["*.yml"],
+            "files": ["*.yml", "*.yaml"],
             "options": {
                 "tabWidth": 2
+            }
+        },
+        {
+            "files": ["*.md"],
+            "options": {
+                "proseWrap": "always"
+            }
+        },
+        {
+            "files": ["*.html", "*.css", "*.scss"],
+            "options": {
+                "singleQuote": false
+            }
+        },
+        {
+            "files": ["*.php"],
+            "options": {
+                "tabWidth": 4
             }
         }
     ]

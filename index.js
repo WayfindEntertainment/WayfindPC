@@ -34,7 +34,11 @@ async function main() {
             await execa('npx', ['eslint', '.', '--ext', '.js,.cjs,.mjs', '--fix'], {
                 stdio: 'inherit'
             })
-            await execa('npx', ['prettier', '--write', '.'], { stdio: 'inherit' })
+            await execa(
+                'npx',
+                ['prettier', '--write', '**/*.{js,cjs,mjs,json,css,scss,html,md,yml,yaml,php}'],
+                { stdio: 'inherit' }
+            )
         } catch (err) {
             if (err.exitCode === 2 && /No files matching/.test(err.stderr || '')) {
                 console.warn(chalk.yellow('⚠️ No matching files to format with ESLint.'))

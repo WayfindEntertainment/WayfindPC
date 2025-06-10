@@ -4,5 +4,8 @@
         "source.fixAll": "never"
     },
     "editor.formatOnSave": false,
-    "eslint.validate": ["javascript"]
+    "eslint.validate": ["javascript"],
+    "prettier.documentSelectors": ["**/*.{js,json,css,html,php}"],
+    "prettier.enableDebugLogs": false,
+    "prettier.requireConfig": true
 }

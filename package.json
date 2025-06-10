@@ -1,6 +1,6 @@
 {
     "name": "wayfindpc",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "engines": {
         "node": ">=18.0.0"
     },
@@ -12,7 +12,7 @@
     "description": "Wayfind Package Creator - a fast opinionated Node project scaffolder for initializing new projects, linting, and formatting",
     "license": "MIT",
     "scripts": {
-        "format": "npx eslint . --fix && npx prettier --write .",
+        "format": "npx eslint . --fix && npx prettier --write \"**/*.{js,cjs,mjs,json,css,scss,html,md,yml,yaml,php}\"",
         "lint": "npx eslint . && npx prettier --check ."
     },
     "files": [
@@ -28,15 +28,16 @@
         "LICENSE"
     ],
     "dependencies": {
+        "@prettier/plugin-php": "^0.22.4",
         "chalk": "^5.0.0",
-        "execa": "^8.0.0",
-        "fs-extra": "^11.0.0",
-        "prompts": "^2.4.2",
         "eslint": "^8.57.0",
-        "prettier": "^3.2.5",
         "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-import": "^2.29.0",
         "eslint-plugin-prettier": "^5.0.0",
-        "eslint-config-prettier": "^9.1.0"
+        "execa": "^8.0.0",
+        "fs-extra": "^11.0.0",
+        "prettier": "^3.2.5",
+        "prompts": "^2.4.2"
     }
 }
