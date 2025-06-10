@@ -19,6 +19,7 @@ const configFiles = [
     '.eslintignore',
     '.prettierrc.json',
     '.prettierignore',
+    '.gitattributes',
     '.vscode/settings.json'
 ]
 
