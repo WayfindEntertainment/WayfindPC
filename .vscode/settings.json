@@ -4,6 +4,5 @@
         "source.fixAll": "never"
     },
     "editor.formatOnSave": false,
-    "eslint.validate": ["javascript"],
-    "eslint.nodePath": "./node_modules/wayfindpc/node_modules"
+    "eslint.validate": ["javascript"]
 }

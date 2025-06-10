@@ -6,8 +6,28 @@ import path from 'path'
 import prompts from 'prompts'
 import chalk from 'chalk'
 import { execa } from 'execa'
+import { fileURLToPath } from 'url'
+
+const sourceRoot = path.dirname(fileURLToPath(import.meta.url))
+
+const wayfindpcPkgVersion = JSON.parse(
+    fs.readFileSync(new URL('./package.json', import.meta.url), 'utf8')
+).version
+
+const configFiles = [
+    '.eslintrc.json',
+    '.eslintignore',
+    '.prettierrc.json',
+    '.prettierignore',
+    '.vscode/settings.json'
+]
 
 async function main() {
+    if (process.argv.includes('--version')) {
+        console.log(`wayfindpc v${wayfindpcPkgVersion}`)
+        process.exit(0)
+    }
+
     if (process.argv[2] === 'format') {
         console.log(chalk.cyan('🔧 Formatting project with ESLint and Prettier...'))
         try {
@@ -46,7 +66,7 @@ async function main() {
     if (hasPkg) {
         if (pkgName) {
             console.log(
-                chalk.yellow(`⚠️ Found existing package.json. Using package name "${pkgName}".`)
+                chalk.yellow(`⚠️ Found existing package.json. Maintaining the current name.`)
             )
         }
 
@@ -94,45 +114,23 @@ async function main() {
 
     pkg.devDependencies = {
         ...pkg.devDependencies,
-        wayfindpc: '^1.0.0'
+        wayfindpc: `^${wayfindpcPkgVersion}`
     }
-
-    pkg.eslintConfig = {
-        extends: ['wayfindpc/config/eslint.cjs']
-    }
-
-    pkg.prettier = 'wayfindpc/config/prettier.cjs'
 
     await fs.writeJSON(pkgJsonPath, pkg, { spaces: 4 })
     await fs.ensureDir(path.join(cwd, '.vscode'))
 
-    const filesToCreate = {
-        '.eslintignore': 'node_modules\ndist\ndocs',
-        '.prettierignore': 'dist\nnode_modules\n*.md',
-        '.vscode/settings.json': JSON.stringify(
-            {
-                'editor.defaultFormatter': 'esbenp.prettier-vscode',
-                'editor.codeActionsOnSave': {
-                    'source.fixAll': 'never'
-                },
-                'editor.formatOnSave': false,
-                'eslint.validate': ['javascript'],
-                'eslint.nodePath': './node_modules/wayfindpc/node_modules'
-            },
-            null,
-            4
-        )
-    }
-
-    console.log(chalk.cyan('\nWriting config files...'))
+    console.log(chalk.cyan('\nWriting fresh config files...'))
 
     const skipped = []
     const written = []
 
     // eslint-disable-next-line no-restricted-syntax
-    for (const [filename, content] of Object.entries(filesToCreate)) {
-        const filepath = path.join(cwd, filename)
-        const exists = fs.existsSync(filepath)
+    for (const filename of configFiles) {
+        const src = path.join(sourceRoot, filename)
+        const dest = path.join(cwd, filename)
+        const exists = fs.existsSync(dest)
+
         if (exists && !force) {
             skipped.push(filename)
             // eslint-disable-next-line no-continue
@@ -140,7 +138,7 @@ async function main() {
         }
 
         // eslint-disable-next-line no-await-in-loop
-        await fs.writeFile(filepath, content)
+        await fs.copy(src, dest)
         written.push(filename)
     }
 
@@ -171,6 +169,15 @@ async function main() {
     )
     console.log(
         chalk.gray('Run ') + chalk.cyan('npm run lint') + chalk.gray(' to lint your code.\n')
+    )
+
+    console.log(`\n ${chalk.yellow('Tip:')}`)
+    console.log(
+        chalk.gray('If ESLint squiggles are not showing in VS Code, open the Command Palette') +
+            chalk.gray(' (') +
+            chalk.cyan('Ctrl+Shift+P') +
+            chalk.gray(') and run ') +
+            chalk.cyan('"ESLint: Restart ESLint Server".\n')
     )
 }
 

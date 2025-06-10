@@ -1,6 +1,6 @@
 {
     "name": "wayfindpc",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "engines": {
         "node": ">=18.0.0"
     },
@@ -9,7 +9,7 @@
     },
     "main": "index.js",
     "type": "module",
-    "description": "Wayfind Package Creator - a fast opinionated Node project scaffolder",
+    "description": "Wayfind Package Creator - a fast opinionated Node project scaffolder for initializing new projects, linting, and formatting",
     "license": "MIT",
     "scripts": {
         "format": "npx eslint . --fix && npx prettier --write .",
@@ -17,8 +17,15 @@
     },
     "files": [
         "index.js",
-        "eslint.js",
-        "prettier.js"
+        ".eslintrc.json",
+        ".eslintignore",
+        ".prettierrc.json",
+        ".prettierignore",
+        ".vscode/settings.json",
+        "package.json",
+        "package-lock.json",
+        "README.md",
+        "LICENSE"
     ],
     "dependencies": {
         "chalk": "^5.0.0",
