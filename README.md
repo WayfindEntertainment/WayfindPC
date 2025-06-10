@@ -4,9 +4,11 @@
 ![eslint](https://img.shields.io/badge/style-eslint-4B32C3.svg)
 ![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
 
-**Wayfind Package Controller** (`wayfindpc`) is a fast, opinionated Node.js project scaffolder for initializing new projects, linting, and formatting.
+**Wayfind Package Controller** (`wayfindpc`) is a fast, opinionated Node.js project scaffolder for
+initializing new projects, linting, and formatting.
 
-It sets up a default set of linting and formatting tools, manages config files, and provides built-in commands to keep your code clean — all from a single devDependency.
+It sets up a default set of linting and formatting tools, manages config files, and provides
+built-in commands to keep your code clean — all from a single devDependency.
 
 ## ✨ Features
 
@@ -22,16 +24,17 @@ It sets up a default set of linting and formatting tools, manages config files, 
 
 When you run `wayfindpc`, it:
 
-1. Prompts for a project name (or uses your existing one if run inside an existing Node project folder)
+1. Prompts for a project name (or uses your existing one if run inside an existing Node project
+   folder)
 2. Adds/updates `"format"` and `"lint"` scripts in `package.json`
 3. Installs `wayfindpc` as a **devDependency**
 4. Adds root-level config files with preconfigured settings:
-   - `.eslintrc.json`
-   - `prettierrc.json`
-   - `.eslintignore`
-   - `.prettierignore`
+    - `.eslintrc.json`
+    - `prettierrc.json`
+    - `.eslintignore`
+    - `.prettierignore`
 5. Ensures VSCode resolves ESLint plugins cleanly by adding:
-   - `.vscode/settings.json`
+    - `.vscode/settings.json`
 
 ## 🚀 Getting Started
 
@@ -43,7 +46,8 @@ cd my-project
 npx wayfindpc
 ```
 
-This will prompt you for a project name. Optionally, you can provide the project name at the same time:
+This will prompt you for a project name. Optionally, you can provide the project name at the same
+time:
 
 ```bash
 npx wayfindpc my-project-name
@@ -56,7 +60,8 @@ cd existing-project
 npx wayfindpc
 ```
 
-This will add the linting/formatting config files and insert a `lint` and `format` script into your `package.json`. Note: if you already had these scripts, it will overwrite them.
+This will add the linting/formatting config files and insert a `lint` and `format` script into your
+`package.json`. Note: if you already had these scripts, it will overwrite them.
 
 ### Overwrite existing config files:
 
@@ -108,7 +113,8 @@ If the following files exist, they will be skipped:
 npx wayfindpc --force
 ```
 
-This is safe. It only replaces the ESLint and Prettier config files and the VS Code settings file, not your source code.
+This is safe. It only replaces the ESLint and Prettier config files and the VS Code settings file,
+not your source code.
 
 ## 🔍 Example Output
 
@@ -124,7 +130,8 @@ Your `package.json` will include:
 }
 ```
 
-You can customize the resulting settings files as needed, but they are designed to plug and play with no further action required.
+You can customize the resulting settings files as needed, but they are designed to plug and play
+with no further action required.
 
 ## 📋 Requirements
 
@@ -137,13 +144,15 @@ You can customize the resulting settings files as needed, but they are designed 
 **wayfindpc** is intentionally opinionated.
 
 It assumes you want:
+
 - Consistent formatting and linting
 - Fast setup
 - No config file sprawl
 
 This program does not handle any git configurations.
 
-If you prefer full customization or different linting stacks, this tool may not be for you. But if you want clean code with no fuss... welcome aboard!
+If you prefer full customization or different linting stacks, this tool may not be for you. But if
+you want clean code with no fuss... welcome aboard!
 
 ## 📜 License
 
