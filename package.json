@@ -1,6 +1,6 @@
 {
     "name": "wayfindpc",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "engines": {
         "node": ">=18.0.0"
     },
@@ -21,6 +21,7 @@
         ".eslintignore",
         ".prettierrc.json",
         ".prettierignore",
+        ".gitattributes",
         ".vscode/settings.json",
         "package.json",
         "package-lock.json",
