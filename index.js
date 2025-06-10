@@ -8,6 +8,8 @@ import chalk from 'chalk'
 import { execa } from 'execa'
 import { fileURLToPath } from 'url'
 
+import runPrettierFormat from './lib/format'
+
 const sourceRoot = path.dirname(fileURLToPath(import.meta.url))
 
 const wayfindpcPkgVersion = JSON.parse(
@@ -31,23 +33,7 @@ async function main() {
 
     if (process.argv[2] === 'format') {
         console.log(chalk.cyan('🔧 Formatting project with ESLint and Prettier...'))
-        try {
-            await execa('npx', ['eslint', '.', '--ext', '.js,.cjs,.mjs', '--fix'], {
-                stdio: 'inherit'
-            })
-            await execa(
-                'npx',
-                ['prettier', '--write', '**/*.{js,cjs,mjs,json,css,scss,html,md,yml,yaml,php}'],
-                { stdio: 'inherit' }
-            )
-        } catch (err) {
-            if (err.exitCode === 2 && /No files matching/.test(err.stderr || '')) {
-                console.warn(chalk.yellow('⚠️ No matching files to format with ESLint.'))
-            } else {
-                console.error(chalk.red('❌ Formatting failed:'), err.message || err)
-                process.exit(1)
-            }
-        }
+        await runPrettierFormat()
         process.exit(0)
     }
 

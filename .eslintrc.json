@@ -18,5 +18,12 @@
         "semi": ["error", "never"],
         "comma-dangle": ["error", "never"],
         "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".mjs"]
+            }
+        }
     }
 }
